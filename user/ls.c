@@ -40,6 +40,8 @@ ls(char *path)
     close(fd);
     return;
   }
+  
+  //printf("%d %d %d %d %d\n", st.dev, st.ino, st.nlink, st.size, st.type);
 
   switch(st.type){
   case T_FILE:

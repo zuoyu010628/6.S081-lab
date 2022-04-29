@@ -4,8 +4,8 @@
 
 int main(int argc, char *argv[]) {
     if (argc < 2) {
-        fprintf(2, "Usgae: sleep ...\n");
-        exit(0);
+        fprintf(2, "usgae: sleep ...\n");
+        exit(1);
     }
     int time = atoi(argv[1]);
     sleep(time);
