@@ -11,5 +11,5 @@ int main(int argc, char *argv[]) {
     sleep(time);
     //printf("Finish sleep\n");
     exit(0);
-    return 0;
+    //return 0;
 }
