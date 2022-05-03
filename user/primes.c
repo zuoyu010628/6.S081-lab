@@ -7,7 +7,7 @@ void go(int p[2])
 
     int l;
     read(p[0], &l, 4);
-    printf("prime %d", l);
+    printf("prime %d\n", l);
     
     int l2r[2];
     int n;
@@ -16,7 +16,12 @@ void go(int p[2])
     {
         if (n % l != 0) {
             pipe(l2r);
-            go(l2r);
+            if (fork() == 0) {
+                go(l2r);
+            }
+            else {
+                write(l2r[1], &n, 4);
+            }
         }
     }
 }
@@ -25,9 +30,11 @@ int main()
 {
     int p[2];
     pipe(p);
+
     if (fork() == 0)
     { // child
         go(p);
+        close(p[0]);
     }
     else
     { // parent
@@ -37,6 +44,6 @@ int main()
             write(p[1], &i, 4); // int 4bytes
         }
         close(p[1]);
-        wait(0); // wati for child and pid_chile == 0
     }
+    exit(0);
 }
