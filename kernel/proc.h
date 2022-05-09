@@ -80,10 +80,16 @@ struct trapframe {
   /* 280 */ uint64 t6;
 };
 
+// nai niu chao ren
+// zai zhen li de hai yang zhong
+// ni xu yao nai niu shen de pi hu
+// xin yang nai niu shen
+
 enum procstate { UNUSED, USED, SLEEPING, RUNNABLE, RUNNING, ZOMBIE };
 
 // Per-process state
 struct proc {
+  int trace_mask;//remeber which to trace
   struct spinlock lock;
 
   // p->lock must be held when using these:
